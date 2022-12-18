@@ -1,0 +1,98 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+:root{
+  --primary: #009688;
+  --darkprimary: #00796B;
+  --lightprimary: #B2DFDB;
+  --buttons: #FF5252;
+  --text: #212121;
+  --secondarytext: #757575;
+  --priority1: #D14E4E;
+  --priority2:#EEA043;
+  --priority3: #DFBD0B;
+  --priority4: #29B06F;
+  --white: #fff;
+}
+/*Text*/
+.greatTitle{
+  font-weight: 700;
+  font-size: 4rem;
+}
+.title{
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+.principalText{
+  font-weight: 400;
+  font-size: 1rem;
+}
+.subtext{
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+/*Colors of text*/
+.green{
+  color: var(--primary);
+}
+.white{
+  color: var(--white);
+}
+.black{
+  color: var(--text);
+}
+.gray{
+  color: var(--secondarytext);
+}
+.lightgreen{
+  color: var(--lightprimary);
+}
+/*buttons*/
+.button{
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  border: none;
+  padding: 8px;
+}
+.primarybutton{
+  color: var(--white);
+  background-color: var(--buttons);
+}
+.secondarybutton{
+  color: var(--buttons);
+  background-color: var(--white);
+  border: 1px solid var(--buttons);
+}
+/*Priority*/
+.veryhigh{
+  background-color: var(--priority1);
+}
+.high{
+  background-color: var(--priority2);
+}
+.medium{
+  background-color: var(--priority3);
+}
+.low{
+  background-color: var(--priority4);
+}
+.primarybg{
+  background-color: var(--primary);
+}
+
+.container{
+  border-radius: 15px;
+}
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

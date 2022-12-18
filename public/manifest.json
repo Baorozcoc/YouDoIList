@@ -1,0 +1,8 @@
+{
+  "short_name": "You Do I List",
+  "name": "ToDo Web site using Reactjs",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#009688",
+  "background_color": "#ffffff"
+}

@@ -1,0 +1,23 @@
+.Principal{
+    background-color: var(--primary);
+    height: 100vh;
+    overflow: hidden;
+}
+
+.header2{
+    padding: 15px;
+    display: flex;
+    justify-content: space-around;
+    width: 100vw;
+}
+.section2{
+    background-color: var(--white);
+    margin-top: 10px;
+    height: 83vh;
+    width: 100vw;
+}
+.floating{
+    position: absolute;
+    top: 92vh;
+    right: 2vw;
+}

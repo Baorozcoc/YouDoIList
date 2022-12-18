@@ -1,0 +1,58 @@
+.NewTask{
+    position:absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+.Exit{
+    background-color: rgba(105, 105, 105, 0.5);
+    width: inherit;
+    height: inherit;
+    z-index: 1;
+}
+.Popup{
+    position: absolute;
+    background-color: var(--primary);
+    bottom: 0;
+    z-index: 2;
+    width: 89vw;
+    padding: 20px;
+    height: 50vh;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.header3{
+    text-align: center;
+    justify-self: flex-start;
+}
+input{
+    width: 100%;
+    border: none;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.Popup div{
+    display: flex;
+    justify-content: space-around;
+}
+.Popup div button{
+    width: 100%;
+    max-width: 150px;
+    margin: 0 1px;
+}
+#Error{
+    color: var(--white);
+    font-weight: 700;
+    background-color: var(--darkprimary);
+    padding: 3px;
+    text-align: center;
+}
+.selected{
+    border: 1px solid white;
+}
