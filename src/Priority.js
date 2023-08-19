@@ -32,9 +32,9 @@ const Priority=({list, setList, setEditTask, setTask})=>{
             return n;
         }
     }
-    function Editing(task){
+    function Editing(task,index){
         let d= task.year + '-' + numberFormat(task.month) + '-' + numberFormat(task.day) + 'T' + numberFormat(task.hour) + ':' + numberFormat(task.minute);
-        setTask({task:task.task, priority:task.priority, date: d})
+        setTask({task:task.task, priority:task.priority, date: d,index:index})
         setEditTask(1);
     }
     const Yearnow= +new Date().getFullYear().toString();
@@ -57,10 +57,10 @@ const Priority=({list, setList, setEditTask, setTask})=>{
             </section>}
             {list.some(task=>task.priority===2)&&<section>
                 <h6 className="principalText high titleprior white">Alta</h6>
-                {list.filter(task=>task.priority===2).map((filtTask,index)=>(
-                <article key={index} className='Card1'>
+                {list.filter(task=>task.priority===2).map((filtTask,indexTask)=>(
+                <article key={indexTask} className='Card1'>
                     <button onClick={()=>seekanddestroy(filtTask)}></button>
-                    <div onClick={()=>Editing(filtTask)} className='Pointer'>
+                    <div onClick={()=>Editing(filtTask,indexTask)} className='Pointer'>
                         <p className='principalText'>{filtTask.task}</p>
                         <p className='subtext gray'>
                             {numberFormat(filtTask.hour)}:{numberFormat(filtTask.minute)} -  {Months[filtTask.month]} {numberFormat(filtTask.day)}  {Yearnow!==filtTask.year&&filtTask.year}

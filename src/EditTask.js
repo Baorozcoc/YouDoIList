@@ -1,7 +1,7 @@
 import './Tasks.css';
 import { useState } from 'react';
 
-const EditTask=({list,setList,setEditTask,lastprior,lastdescr,lastdate})=>{
+const EditTask=({list,setList,setEditTask,lastprior,lastdescr,lastdate,index})=>{
     const [prior, setprior]= useState(lastprior);
     
     setTimeout(() => {
@@ -62,17 +62,6 @@ const EditTask=({list,setList,setEditTask,lastprior,lastdescr,lastdate})=>{
         }
     }
     function EditTask(){
-        //Find
-        let descr=lastdescr;
-        let priori=lastprior;
-        let Yeardate=+lastdate.split("-")[0].toString();
-        let Monthdate=+lastdate.split("-")[1].toString(); //1 to 12
-        let Daydate=+lastdate.split("-")[2].split("T")[0];
-        let Hourdate=+lastdate.split('-')[2].split('T')[1].split(':')[0].toString();
-        let Minutedate=+lastdate.split('-')[2].split('T')[1].split(':')[1].toString();
-        let task={task:descr,year:Yeardate,month:Monthdate,day:Daydate,hour:Hourdate,minute:Minutedate,priority:priori}
-        let index= list.indexOf(task);
-        let arr= list.slice();
         //Edit
         let descr2= document.querySelector('#task2').value;
         let date= document.querySelector('#date2').value;
@@ -81,20 +70,13 @@ const EditTask=({list,setList,setEditTask,lastprior,lastdescr,lastdate})=>{
         let day2=+date.split("-")[2].split("T")[0];
         let hour2=+date.split('-')[2].split('T')[1].split(':')[0].toString();
         let minute2=+date.split('-')[2].split('T')[1].split(':')[1].toString();
-        arr[index]={task:descr2,year:year2,month:month2,day:day2,hour:hour2,minute:minute2,priority:prior};
+        var arr=list.slice();
+        arr.splice(index,1);
+        arr.push({task:descr2,year:year2,month:month2,day:day2,hour:hour2,minute:minute2,priority:prior});
         setList(arr);
         setEditTask(0);
     }
     function seekanddestroy() {
-        let descr=lastdescr;
-        let priori=lastprior;
-        let Yeardate=+lastdate.split("-")[0].toString();
-        let Monthdate=+lastdate.split("-")[1].toString(); //1 to 12
-        let Daydate=+lastdate.split("-")[2].split("T")[0];
-        let Hourdate=+lastdate.split('-')[2].split('T')[1].split(':')[0].toString();
-        let Minutedate=+lastdate.split('-')[2].split('T')[1].split(':')[1].toString();
-        let task={task:descr,year:Yeardate,month:Monthdate,day:Daydate,hour:Hourdate,minute:Minutedate,priority:priori}
-        let index= list.indexOf(task);
         var arr=list.slice();
         arr.splice(index,1);
         setList(arr);
