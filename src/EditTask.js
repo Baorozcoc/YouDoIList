@@ -2,8 +2,6 @@ import './Tasks.css';
 import { useState } from 'react';
 
 const EditTask=({list,setList,setEditTask,lastprior,lastdescr,lastdate,index})=>{
-    const [prior, setprior]= useState(lastprior);
-    
     setTimeout(() => {
         if(lastdescr){
             document.querySelector('#task2').value= lastdescr;
@@ -12,7 +10,10 @@ const EditTask=({list,setList,setEditTask,lastprior,lastdescr,lastdate,index})=>
             document.querySelector('#date2').value = lastdate;
         }
     }, 100);
-        
+    const [prior, setprior]= useState(lastprior);    
+    function setPriority(priority){
+        setprior(priority);
+    }
     function evaluate(){
         let error=document.querySelector('#Error2');
         let descrValid=false;
@@ -71,8 +72,12 @@ const EditTask=({list,setList,setEditTask,lastprior,lastdescr,lastdate,index})=>
         let hour2=+date.split('-')[2].split('T')[1].split(':')[0].toString();
         let minute2=+date.split('-')[2].split('T')[1].split(':')[1].toString();
         var arr=list.slice();
+        console.log(arr);
+        console.log(index);
         arr.splice(index,1);
+        console.log(arr);
         arr.push({task:descr2,year:year2,month:month2,day:day2,hour:hour2,minute:minute2,priority:prior});
+        console.log(arr);
         setList(arr);
         setEditTask(0);
     }
@@ -104,10 +109,10 @@ const EditTask=({list,setList,setEditTask,lastprior,lastdescr,lastdate,index})=>
                 <label className='lightgreen principalText'>
                     Prioridad
                     <div>
-                        {prior===4?<button id='baja' onClick={()=> setprior(4)} className='low button principalText white selected'>Baja</button>:<button id='baja' onClick={()=> setprior(4)} className='low button principalText white'>Baja</button>}
-                        {prior===3?<button id='media' onClick={()=> setprior(3)} className='medium button principalText white selected'>Media</button>:<button id='media' onClick={()=> setprior(3)} className='medium button principalText white'>Media</button>}
-                        {prior===2?<button id='alta' onClick={()=> setprior(2)} className='high button principalText white selected'>Alta</button>:<button id='alta' onClick={()=> setprior(2)} className='high button principalText white'>Alta</button>}
-                        {prior===1?<button id='muyalta' onClick={()=> setprior(1)} className='veryhigh button principalText white selected'>Muy Alta</button>:<button id='muyalta' onClick={()=> setprior(1)} className='veryhigh button principalText white'>Muy Alta</button>}
+                        {prior===4?<button id='baja' onClick={()=> setPriority(4)} className='low button principalText white selected'>Baja</button>:<button id='baja' onClick={()=> setPriority(4)} className='low button principalText white'>Baja</button>}
+                        {prior===3?<button id='media' onClick={()=> setPriority(3)} className='medium button principalText white selected'>Media</button>:<button id='media' onClick={()=> setPriority(3)} className='medium button principalText white'>Media</button>}
+                        {prior===2?<button id='alta' onClick={()=> setPriority(2)} className='high button principalText white selected'>Alta</button>:<button id='alta' onClick={()=> setPriority(2)} className='high button principalText white'>Alta</button>}
+                        {prior===1?<button id='muyalta' onClick={()=> setPriority(1)} className='veryhigh button principalText white selected'>Muy Alta</button>:<button id='muyalta' onClick={()=> setPriority(1)} className='veryhigh button principalText white'>Muy Alta</button>}
                     </div>
                 </label>
                 
