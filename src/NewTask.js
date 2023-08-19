@@ -18,7 +18,7 @@ const NewTask=({list,setList,setNewTask})=>{
         let now = new Date();
         now.setMinutes(now.getMinutes() - now.getTimezoneOffset() + 30);     
         document.querySelector('#date').value = now.toISOString().slice(0, -8);
-    }, 1000);
+    }, 100);
     function evaluate(){
         let error=document.querySelector('#Error');
         let descrValid=false;
