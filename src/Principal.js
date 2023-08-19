@@ -20,7 +20,7 @@ function Principal(){
                 > Nueva Tarea</button>
             </header>
             <section className='container section2'>
-                <h2 className='green header2'>{mode===0?"Tareas ordenadas por Importancia":"Tareas ordenadas por Fecha"}</h2>
+                <h2 className='green header2'>{list.length?mode===0?"Tareas ordenadas por Importancia":"Tareas ordenadas por Fecha":""}</h2>
                 {mode===0?<Priority list={list} setList={setList} setEditTask={setEditTask} setTask={setTask}/>:<Urgency list={list} setList={setList} setEditTask={setEditTask} setTask={setTask}/>}
             </section>
             {mode===0

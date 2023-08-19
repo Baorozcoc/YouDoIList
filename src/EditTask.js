@@ -3,12 +3,16 @@ import { useState } from 'react';
 
 const EditTask=({list,setList,setEditTask,lastprior,lastdescr,lastdate})=>{
     const [prior, setprior]= useState(lastprior);
-    if(lastdescr){
-        document.querySelector('#task2').value= lastdescr;
-    }
-    if(lastdate){
-        document.querySelector('#date2').value = new Date(lastdate).toISOString().slice(0, -1);
-    }
+    
+    setTimeout(() => {
+        if(lastdescr){
+            document.querySelector('#task2').value= lastdescr;
+        }
+        if(lastdate){
+            document.querySelector('#date2').value = new Date(lastdate).toISOString().slice(0, -1);
+        }
+    }, 1000);
+        
     function evaluate(){
         let error=document.querySelector('#Error2');
         let descrValid=false;

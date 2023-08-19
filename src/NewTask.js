@@ -14,10 +14,11 @@ const NewTask=({list,setList,setNewTask})=>{
         document.querySelector(dic[n-1]).classList.add('selected');
         }
     }
-    let now = new Date();
-    now.setMinutes(now.getMinutes() - now.getTimezoneOffset());     
-    document.querySelector('#date').value = now.toISOString().slice(0, -1);
-    
+    setTimeout(() => {
+        let now = new Date();
+        now.setMinutes(now.getMinutes() - now.getTimezoneOffset());     
+        document.querySelector('#date').value = now.toISOString().slice(0, -1);
+    }, 1000);
     function evaluate(){
         let error=document.querySelector('#Error');
         let descrValid=false;
