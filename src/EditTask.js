@@ -3,6 +3,12 @@ import { useState } from 'react';
 
 const EditTask=({list,setList,setEditTask,lastprior,lastdescr,lastdate})=>{
     const [prior, setprior]= useState(lastprior);
+    if(lastdescr){
+        document.querySelector('#task2').value= lastdescr;
+    }
+    if(lastdate){
+        document.querySelector('#date2').value = new Date(lastdate).toISOString().slice(0, -1);
+    }
     function evaluate(){
         let error=document.querySelector('#Error2');
         let descrValid=false;
@@ -55,19 +61,10 @@ const EditTask=({list,setList,setEditTask,lastprior,lastdescr,lastdate})=>{
         }
     }
     function EditTask(){
-        //Find
-        let descr=lastdescr;
-        let priori=lastprior;
-        let Yeardate=+lastdate.split("-")[0].toString();
-        let Monthdate=+lastdate.split("-")[1].toString(); //1 to 12
-        let Daydate=+lastdate.split("-")[2].split("T")[0];
-        let Hourdate=+lastdate.split('-')[2].split('T')[1].split(':')[0].toString();
-        let Minutedate=+lastdate.split('-')[2].split('T')[1].split(':')[1].toString();
-        let task={task:descr,year:Yeardate,month:Monthdate,day:Daydate,hour:Hourdate,minute:Minutedate,priority:priori}
-        let index= list.indexOf(task);
-        var arr=list.slice();
-        arr.splice(index,1);
+        //Destroy
+        seekanddestroy(false);
         //Edit
+        var arr=list.slice();
         let descr2= document.querySelector('#task2').value;
         let date= document.querySelector('#date2').value;
         let year2=+date.split("-")[0].toString();
@@ -79,7 +76,7 @@ const EditTask=({list,setList,setEditTask,lastprior,lastdescr,lastdate})=>{
         setList(arr);
         setEditTask(0);
     }
-    function seekanddestroy() {
+    function seekanddestroy(finishEdit=true) {
         let descr=lastdescr;
         let priori=lastprior;
         let Yeardate=+lastdate.split("-")[0].toString();
@@ -92,7 +89,7 @@ const EditTask=({list,setList,setEditTask,lastprior,lastdescr,lastdate})=>{
         var arr=list.slice();
         arr.splice(index,1);
         setList(arr);
-        setEditTask(0);
+        finishEdit&&setEditTask(0);
     }
     return(
         <div className="NewTask">
@@ -111,7 +108,7 @@ const EditTask=({list,setList,setEditTask,lastprior,lastdescr,lastdate})=>{
                 </label>
                 <label className='lightgreen principalText'>
                     Fecha y Hora <br/>
-                    <input type="datetime-local" id='date2' placeholder={lastdate}></input>
+                    <input type="datetime-local" id='date2'></input>
                 </label>
                 <label className='lightgreen principalText'>
                     Prioridad

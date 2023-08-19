@@ -20,14 +20,15 @@ function Principal(){
                 > Nueva Tarea</button>
             </header>
             <section className='container section2'>
+                <h2 className='green header2'>{mode===0?"Tareas ordenadas por Importancia":"Tareas ordenadas por Fecha"}</h2>
                 {mode===0?<Priority list={list} setList={setList} setEditTask={setEditTask} setTask={setTask}/>:<Urgency list={list} setList={setList} setEditTask={setEditTask} setTask={setTask}/>}
             </section>
             {mode===0
             ?<button className='button secondarybutton principalText floating' onClick={()=> setMode(1)}>
-                Por Urgencia
+                Ordenar por fecha
             </button>
             :<button className='button secondarybutton principalText floating' onClick={()=> setMode(0)}>
-                Por Importancia
+                Ordenar por importancia
              </button>}
             {newTask===1&&<NewTask list={list} setList={setList} setNewTask={setNewTask}/>}
             {editTask===1&&<EditTask list={list} setList={setList} setEditTask={setEditTask} lastprior={task.priority} lastdescr={task.task} lastdate={task.date}/>}

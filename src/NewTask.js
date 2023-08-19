@@ -14,21 +14,22 @@ const NewTask=({list,setList,setNewTask})=>{
         document.querySelector(dic[n-1]).classList.add('selected');
         }
     }
+    let now = new Date();
+    now.setMinutes(now.getMinutes() - now.getTimezoneOffset());     
+    document.querySelector('#date').value = now.toISOString().slice(0, -1);
+    
     function evaluate(){
         let error=document.querySelector('#Error');
         let descrValid=false;
         let dateValid=false;
 
         let descr= document.querySelector('#task').value;
-        const regex= new RegExp("^[a-zA-Z0-9_ áéíóúñ]*$");
         if(descr===""){
             error.innerHTML='Porfavor escribe una tarea';
-        }else if(descr.length>100){
-            error.innerHTML='La descripción puede tener hasta 100 caracteres';
+        }else if(descr.length>500){
+            error.innerHTML='La descripción puede tener hasta 500 caracteres';
         }else if(descr.length<5){
             error.innerHTML='La descripción debe tener al menos 5 caracteres';
-        }else if(!regex.test(descr)){
-            error.innerHTML='No se admiten caracteres especiales!';
         }else{
             descrValid=true;
         }
