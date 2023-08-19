@@ -34,7 +34,7 @@ const Priority=({list, setList, setEditTask, setTask})=>{
     }
     function Editing(task,index){
         let d= task.year + '-' + numberFormat(task.month) + '-' + numberFormat(task.day) + 'T' + numberFormat(task.hour) + ':' + numberFormat(task.minute);
-        setTask({task:task.task, priority:task.priority, date: d,index:index})
+        setTask({task:task.task, priority:task.priority, date: d,indexTask:index})
         setEditTask(1);
     }
     const Yearnow= +new Date().getFullYear().toString();
@@ -42,10 +42,10 @@ const Priority=({list, setList, setEditTask, setTask})=>{
         <div className='Priority Grid'>
             {list.some(task=>task.priority===1)&&<section>
                 <h6 className="principalText veryhigh titleprior white">Muy Alta</h6>
-                {list.filter(task=>task.priority===1).map((filtTask,index)=>(
-                    <article key={index} className='Card1'>
+                {list.filter(task=>task.priority===1).map((filtTask,indexTask)=>(
+                    <article key={indexTask} className='Card1'>
                         <button onClick={()=>seekanddestroy(filtTask)}></button>
-                        <div onClick={()=>Editing(filtTask)} className='Pointer'>
+                        <div onClick={()=>Editing(filtTask,indexTask)} className='Pointer'>
                             <p className='principalText'>{filtTask.task}</p>
                             <p className='subtext gray'>
                                 {numberFormat(filtTask.hour)}:{numberFormat(filtTask.minute)} -  {Months[filtTask.month]} {numberFormat(filtTask.day)}  {Yearnow!==filtTask.year&&filtTask.year}

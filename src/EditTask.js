@@ -1,15 +1,18 @@
 import './Tasks.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-const EditTask=({list,setList,setEditTask,lastprior,lastdescr,lastdate,index})=>{
-    setTimeout(() => {
-        if(lastdescr){
-            document.querySelector('#task2').value= lastdescr;
-        }
-        if(lastdate){
-            document.querySelector('#date2').value = lastdate;
-        }
-    }, 100);
+const EditTask=({list,setList,setEditTask,lastprior,lastdescr,lastdate,indexTask})=>{
+    useEffect(() => {
+        setTimeout(() => {
+            if(lastdescr){
+                document.querySelector('#task2').value= lastdescr;
+            }
+            if(lastdate){
+                document.querySelector('#date2').value = lastdate;
+            }
+        }, 100);
+    }, [lastdate, lastdescr]);  
+    
     const [prior, setprior]= useState(lastprior);    
     function setPriority(priority){
         setprior(priority);
@@ -73,8 +76,8 @@ const EditTask=({list,setList,setEditTask,lastprior,lastdescr,lastdate,index})=>
         let minute2=+date.split('-')[2].split('T')[1].split(':')[1].toString();
         var arr=list.slice();
         console.log(arr);
-        console.log(index);
-        arr.splice(index,1);
+        console.log(indexTask);
+        arr.splice(indexTask,1);
         console.log(arr);
         arr.push({task:descr2,year:year2,month:month2,day:day2,hour:hour2,minute:minute2,priority:prior});
         console.log(arr);
@@ -83,7 +86,7 @@ const EditTask=({list,setList,setEditTask,lastprior,lastdescr,lastdate,index})=>
     }
     function seekanddestroy() {
         var arr=list.slice();
-        arr.splice(index,1);
+        arr.splice(indexTask,1);
         setList(arr);
         setEditTask(0);
     }

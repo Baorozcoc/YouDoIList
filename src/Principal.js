@@ -31,7 +31,7 @@ function Principal(){
                 Ordenar por importancia
              </button>}
             {newTask===1&&<NewTask list={list} setList={setList} setNewTask={setNewTask}/>}
-            {editTask===1&&<EditTask list={list} setList={setList} setEditTask={setEditTask} lastprior={task.priority} lastdescr={task.task} lastdate={task.date} index={task.index}/>}
+            {editTask===1&&<EditTask list={list} setList={setList} setEditTask={setEditTask} lastprior={task.priority} lastdescr={task.task} lastdate={task.date} indexTask={task.indexTask}/>}
         </div>
     );
 }

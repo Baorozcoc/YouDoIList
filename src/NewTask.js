@@ -1,7 +1,14 @@
 import './Tasks.css';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 
 const NewTask=({list,setList,setNewTask})=>{
+    useEffect(() => {
+        setTimeout(() => {
+            let now = new Date();
+            now.setMinutes(now.getMinutes() - now.getTimezoneOffset() + 30);     
+            document.querySelector('#date').value = now.toISOString().slice(0, -8);
+        }, 100);
+      }, []);  
     const [prior, setprior]= useState(4);
     function setPriority(n){
         if(n!==prior){
@@ -14,11 +21,7 @@ const NewTask=({list,setList,setNewTask})=>{
         document.querySelector(dic[n-1]).classList.add('selected');
         }
     }
-    setTimeout(() => {
-        let now = new Date();
-        now.setMinutes(now.getMinutes() - now.getTimezoneOffset() + 30);     
-        document.querySelector('#date').value = now.toISOString().slice(0, -8);
-    }, 100);
+    
     function evaluate(){
         let error=document.querySelector('#Error');
         let descrValid=false;

@@ -36,7 +36,7 @@ const Urgency=({list, setList, setEditTask, setTask})=>{
     }
     function Editing(task,index){
         let d= task.year + '-' + numberFormat(task.month) + '-' + numberFormat(task.day) + 'T' + numberFormat(task.hour) + ':' + numberFormat(task.minute);
-        setTask({task:task.task, priority:task.priority, date: d, index: index})
+        setTask({task:task.task, priority:task.priority, date: d, indexTask: index})
         setEditTask(1);
     }
     return(
