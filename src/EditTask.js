@@ -9,7 +9,7 @@ const EditTask=({list,setList,setEditTask,lastprior,lastdescr,lastdate})=>{
             document.querySelector('#task2').value= lastdescr;
         }
         if(lastdate){
-            document.querySelector('#date2').value = new Date(lastdate).toISOString().slice(0, -1);
+            document.querySelector('#date2').value = lastdate;
         }
     }, 1000);
         
@@ -19,15 +19,12 @@ const EditTask=({list,setList,setEditTask,lastprior,lastdescr,lastdate})=>{
         let dateValid=false;
 
         let descr= document.querySelector('#task2').value;
-        const regex= new RegExp("^[a-zA-Z0-9_ áéíóúñ]*$");
         if(descr===""){
             error.innerHTML='Porfavor escribe una tarea';
         }else if(descr.length>100){
             error.innerHTML='La descripción puede tener hasta 100 caracteres';
         }else if(descr.length<5){
             error.innerHTML='La descripción debe tener al menos 5 caracteres';
-        }else if(!regex.test(descr)){
-            error.innerHTML='No se admiten caracteres especiales!';
         }else{
             descrValid=true;
         }
