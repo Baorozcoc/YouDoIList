@@ -1,7 +1,7 @@
 import './Tasks.css';
 import { useState, useEffect } from 'react';
 
-const EditTask=({list,setList,setEditTask,lastprior,lastdescr,lastdate,indexTask})=>{
+const EditTask=({list,setList,setEditTask,lastprior,lastdescr,lastdate,realTask})=>{
     useEffect(() => {
         setTimeout(() => {
             if(lastdescr){
@@ -74,21 +74,18 @@ const EditTask=({list,setList,setEditTask,lastprior,lastdescr,lastdate,indexTask
         let day2=+date.split("-")[2].split("T")[0];
         let hour2=+date.split('-')[2].split('T')[1].split(':')[0].toString();
         let minute2=+date.split('-')[2].split('T')[1].split(':')[1].toString();
+        let index= list.indexOf(realTask);
         var arr=list.slice();
-        console.log(arr);
-        console.log(indexTask);
-        arr.splice(indexTask,1);
-        console.log(arr);
+        arr.splice(index,1);
         arr.push({task:descr2,year:year2,month:month2,day:day2,hour:hour2,minute:minute2,priority:prior});
-        console.log(arr);
         setList(arr);
         setEditTask(0);
     }
     function seekanddestroy() {
+        let index= list.indexOf(realTask);
         var arr=list.slice();
-        arr.splice(indexTask,1);
+        arr.splice(index,1);
         setList(arr);
-        setEditTask(0);
     }
     return(
         <div className="NewTask">

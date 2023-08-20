@@ -34,9 +34,9 @@ const Urgency=({list, setList, setEditTask, setTask})=>{
             return n;
         }
     }
-    function Editing(task,index){
+    function Editing(task){
         let d= task.year + '-' + numberFormat(task.month) + '-' + numberFormat(task.day) + 'T' + numberFormat(task.hour) + ':' + numberFormat(task.minute);
-        setTask({task:task.task, priority:task.priority, date: d, indexTask: index})
+        setTask({task:task.task, priority:task.priority, date: d, realTask: task})
         setEditTask(1);
     }
     return(
@@ -60,7 +60,7 @@ const Urgency=({list, setList, setEditTask, setTask})=>{
                                             {filtTask.priority===3&&<div className='preline medium'></div>}
                                             {filtTask.priority===4&&<div className='preline low'></div>}
                                             <button onClick={()=>seekanddestroy(filtTask)}></button>
-                                            <div onClick={()=>Editing(filtTask,indexTask)} className='Pointer'>
+                                            <div onClick={()=>Editing(filtTask)} className='Pointer'>
                                                 <p className='principalText'>{filtTask.task}</p>
                                                 <p className='subtext gray'>
                                                     {numberFormat(filtTask.hour)}:{numberFormat(filtTask.minute)}
